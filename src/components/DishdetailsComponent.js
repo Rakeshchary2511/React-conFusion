@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { Card, CardImg, CardText, CardTitle, CardBody } from "reactstrap"
-import "bootstrap/dist/css/bootstrap.min.css"
+import { Card, CardImg, CardText, CardTitle, CardBody } from "reactstrap";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 class Dishdetail extends Component {
 
