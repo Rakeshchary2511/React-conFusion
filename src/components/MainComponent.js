@@ -9,7 +9,7 @@ import Dishdetail from './DishdetailsComponent';
 import Header from './HeaderComponent';
 import Footer from './FooterComponent';
 import Home from './HomeComponent';
-import Contact from './ContactComponent'
+import Contact from './ContactUsComponent'
 
 class Main extends Component {
   constructor(props) {
