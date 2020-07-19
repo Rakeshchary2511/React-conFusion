@@ -26,7 +26,7 @@ class CommentForm extends Component {
     }
     submitHandle = (values) => {
         this.handleToggle();
-        this.props.addComment(this.props.dishId, values.rating, values.author, values.comment)
+        this.props.postComment(this.props.dishId, values.rating, values.author, values.comment)
 
     }
     render() {
@@ -108,7 +108,7 @@ class CommentForm extends Component {
 }
 
 
-const Dishdetail = ({ dish, comments, addComment, isLoading, errMess }) => {
+const Dishdetail = ({ dish, comments, postComment, isLoading, errMess }) => {
     if (isLoading) {
         return (
             <div className="container">
@@ -130,7 +130,7 @@ const Dishdetail = ({ dish, comments, addComment, isLoading, errMess }) => {
     else {
         return (
             <React.Fragment>
-                <RenderDish dish={dish} comments={comments} addComment={addComment} />
+                <RenderDish dish={dish} comments={comments} postComment={postComment} />
             </React.Fragment>
         );
     }
@@ -142,7 +142,7 @@ function formatDate(date) {
     const newdate = date1.toLocaleDateString("en-US", option)
     return newdate;
 }
-const RenderComments = ({ comments, addComment, dishId }) => {
+function RenderComments({comments, postComment, dishId}) {
     if (comments != null) {
         const com = comments.map(co => {
 
@@ -158,7 +158,7 @@ const RenderComments = ({ comments, addComment, dishId }) => {
         return (
             <ul className="list-unstyled">
                 {com}
-                <CommentForm dishId={dishId} addComment={addComment} />
+                <CommentForm dishId={dishId} postComment={postComment} />
             </ul>
 
         )
@@ -167,7 +167,7 @@ const RenderComments = ({ comments, addComment, dishId }) => {
         return (<div></div>)
     }
 }
-const RenderDish = ({ dish, comments, addComment }) => {
+const RenderDish = ({ dish, comments, postComment }) => {
     if (dish != null) {
         return (
             <div className="container">
@@ -194,7 +194,7 @@ const RenderDish = ({ dish, comments, addComment }) => {
                     <div className="col-12 col-md-5 m-1" >
                         <h4>Comments</h4>
                         <RenderComments comments={comments}
-                            addComment={addComment}
+                            postComment={postComment}
                             dishId={dish.id} />
                     </div>
                 </div>
