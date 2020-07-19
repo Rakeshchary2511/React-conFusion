@@ -3,7 +3,7 @@ import { Card, CardImg, CardText, CardTitle, CardBody, Breadcrumb, BreadcrumbIte
 import 'font-awesome/css/font-awesome.min.css'
 import "bootstrap/dist/css/bootstrap.min.css"
 import { Link } from 'react-router-dom'
-import { Control, LocalForm, Errors } from 'react-redux-form'
+import { Control, Form, Errors } from 'react-redux-form'
 import { Loading } from './LoadingComponent'
 import { baseUrl } from '../shared/baseUrl'
 import { FadeTransform, Fade, Stagger } from 'react-animation-components';
@@ -26,10 +26,9 @@ class CommentForm extends Component {
             }
         )
     }
-    submitHandle = (values) => {
+    handleSubmit = (values) => {
         this.handleToggle();
         this.props.postComment(this.props.dishId, values.rating, values.author, values.comment)
-
     }
     render() {
         return (
@@ -40,7 +39,7 @@ class CommentForm extends Component {
                         Submit Comment
                 </ModalHeader>
                     <ModalBody>
-                        <LocalForm onSubmit={(value) => this.submitHandle(value)}>
+                        <Form onSubmit={(value) => this.handleSubmit(value)}>
                             <Row className="form-group">
                                 <Label htmlFor="rating" md={4}>Rating</Label>
                                 <Col md={12}>
@@ -101,7 +100,7 @@ class CommentForm extends Component {
                                     <Button type="submit" color="primary" >Submit</Button>
                                 </Col>
                             </Row>
-                        </LocalForm>
+                        </Form>
                     </ModalBody>
                 </Modal>
             </React.Fragment>
